@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple API</title>
+</head>
+<body>
+    <h1>Simple API Response</h1>
+    <button id="fetchData">Fetch Data</button>
+    <pre id="response"></pre>
+
+    <script>
+        document.getElementById('fetchData').addEventListener('click', () => {
+            const response = {
+                serverCount: 10,
+                memberCount: 100,
+                totalFlights: 5,
+                money: 500
+            };
+            document.getElementById('response').innerText = JSON.stringify(response, null, 2);
+        });
+    </script>
+</body>
+</html>
