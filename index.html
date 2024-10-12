@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple API</title>
+    <title>Discord Bot Stats</title>
 </head>
 <body>
-    <h1>Simple API Response</h1>
-    <button id="fetchData">Fetch Data</button>
+    <h1>Discord Bot Stats</h1>
+    <button id="fetchData">Fetch Bot Stats</button>
     <pre id="response"></pre>
 
     <script>
         document.getElementById('fetchData').addEventListener('click', () => {
-            const response = {
-                serverCount: 10,
-                memberCount: 100,
-                totalFlights: 5,
-                money: 500
-            };
-            document.getElementById('response').innerText = JSON.stringify(response, null, 2);
+            fetch('https://YOUR_USERNAME.github.io/planepal-api/api/data.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('response').innerText = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    document.getElementById('response').innerText = 'Error: ' + error.message;
+                });
         });
     </script>
 </body>
