@@ -10,22 +10,6 @@
     <button id="fetchData">Fetch Bot Stats</button>
     <pre id="response"></pre>
 
-    <script>
-        document.getElementById('fetchData').addEventListener('click', () => {
-            fetch('https://DevJSTAR.github.io/planepal-api/api/data.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    document.getElementById('response').innerText = JSON.stringify(data, null, 2);
-                })
-                .catch(error => {
-                    document.getElementById('response').innerText = 'Error: ' + error.message;
-                });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
