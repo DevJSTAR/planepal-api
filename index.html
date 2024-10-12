@@ -5,133 +5,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlanePal API</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #1a1a1a;
-            color: #f0f0f0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-        }
-
-        .container {
             text-align: center;
-            background: #2a2a2a;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            width: 300px;
         }
 
         h1 {
             margin-bottom: 20px;
-            font-size: 24px;
-            color: #007bff;
+            font-size: 28px;
+            color: #ffffff;
         }
 
         p {
             font-size: 18px;
             margin: 10px 0;
+            color: #ffffff;
         }
 
         button {
-            padding: 12px 20px;
+            padding: 14px 28px;
             border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
+            border-radius: 25px;
+            background-color: #FFFFFF;
+            color: #000000;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
+            font-size: 16px;
+            letter-spacing: 1px;
             position: relative;
             overflow: hidden;
+            display: inline-block;
+            vertical-align: middle;
         }
 
-        button:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-        }
-
-        .loading {
-            position: relative;
-            color: #007bff;
-        }
-
-        .loading::after {
-            content: '';
-            position: absolute;
-            border: 2px solid transparent;
-            border-top: 2px solid #007bff;
+        .spinner {
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-top: 3px solid #000000;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: spin 0.6s linear infinite;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            top: 12.5px;
+            left: 50px;
+            transform: translateX(-50%);
         }
 
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        .spinner.hidden {
+            display: none;
+        }
+
+        .text.hidden {
+            visibility: hidden;
+        }
+
+        .loading-text {
+            animation: pulse 1s infinite ease-in-out;
+            color: #555;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div>
         <h1>PlanePal API</h1>
         <div id="data">
             <p id="serverCount">Loading server count...</p>
             <p id="memberCount">Loading member count...</p>
         </div>
-        <button id="refreshButton">Refresh Data</button>
+        <button id="refreshButton">
+            <span class="spinner hidden"></span>
+            <span class="text">Refresh</span>
+        </button>
     </div>
     <script>
-        // GitHub Repo details
         const REPO_OWNER = 'DevJSTAR';
         const REPO_NAME = 'planepal-api';
         const FILE_PATH = 'api/data.json';
 
-        // Function to fetch server and member count from GitHub API
         async function fetchData() {
             const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
 
             try {
-                // Update the UI for loading state
                 const refreshButton = document.getElementById('refreshButton');
-                refreshButton.innerText = 'Loading...';
-                refreshButton.classList.add('loading');
+                const spinner = refreshButton.querySelector('.spinner');
+                const buttonText = refreshButton.querySelector('.text');
+                const serverCountText = document.getElementById('serverCount');
+                const memberCountText = document.getElementById('memberCount');
+
+                serverCountText.classList.add('loading-text');
+                memberCountText.classList.add('loading-text');
+
+                buttonText.classList.add('hidden'); 
+                spinner.classList.remove('hidden'); 
+                refreshButton.disabled = true; 
 
                 const response = await fetch(url);
                 if (!response.ok) throw new Error('Network response was not ok');
 
                 const data = await response.json();
-                const jsonContent = atob(data.content); // Decode base64 content
+                const jsonContent = atob(data.content);
+                const jsonData = JSON.parse(jsonContent);
 
-                const jsonData = JSON.parse(jsonContent); // Parse JSON data
-
-                // Update the UI with fetched data
-                document.getElementById('serverCount').innerText = `Server Count: ${jsonData.serverCount}`;
-                document.getElementById('memberCount').innerText = `Member Count: ${jsonData.memberCount}`;
+                serverCountText.innerText = `Server Count: ${jsonData.serverCount}`;
+                memberCountText.innerText = `Member Count: ${jsonData.memberCount}`;
             } catch (error) {
                 console.error('Error fetching data:', error);
                 document.getElementById('serverCount').innerText = 'Failed to load server count';
                 document.getElementById('memberCount').innerText = 'Failed to load member count';
             } finally {
-                // Reset button text and remove loading state
                 setTimeout(() => {
                     const refreshButton = document.getElementById('refreshButton');
-                    refreshButton.innerText = 'Refresh Data';
-                    refreshButton.classList.remove('loading');
-                }, 1000); // 1 second delay before resetting
+                    const spinner = refreshButton.querySelector('.spinner');
+                    const buttonText = refreshButton.querySelector('.text');
+                    const serverCountText = document.getElementById('serverCount');
+                    const memberCountText = document.getElementById('memberCount');
+
+                    serverCountText.classList.remove('loading-text');
+                    memberCountText.classList.remove('loading-text');
+
+                    buttonText.classList.remove('hidden');
+                    spinner.classList.add('hidden');
+                    refreshButton.disabled = false; 
+                }, 2000); 
             }
         }
 
-        // Call the fetchData function when the page loads
         window.onload = fetchData;
 
-        // Add event listener to refresh button
         document.getElementById('refreshButton').addEventListener('click', fetchData);
     </script>
 </body>
