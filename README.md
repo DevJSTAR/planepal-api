@@ -72,12 +72,12 @@ getPlanePalData();
 name: "stats",
 code: `
 $title[✈ PlanePal's Bot Stats!]
-$addField[Member Count;$get[memberCount]]
-$addField[Server Count;$get[serverCount]]
+$addField[Member Count;$get[members]]
+$addField[Server Count;$get[servers]]
 $color[Random]
 
-$let[serverCount;$httpRequest[$get[url];GET;;serverCount;An error occurred while fetching the PlanePal Server Count!]]
-$let[memberCount;$httpRequest[$get[url];GET;;memberCount;An error occurred while fetching the PlanePal Member Count!]]
+$let[servers;$httpRequest[$get[url];GET;;serverCount;An error occurred while fetching the PlanePal Server Count!]]
+$let[members;$httpRequest[$get[url];GET;;memberCount;An error occurred while fetching the PlanePal Member Count!]]
 $let[url;https://raw.githubusercontent.com/DevJSTAR/planepal-api/refs/heads/main/api/data.json]
 `
 });
