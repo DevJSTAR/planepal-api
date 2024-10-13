@@ -76,8 +76,9 @@ $addField[Member Count;$get[memberCount]]
 $addField[Server Count;$get[serverCount]]
 $color[Random]
 
-$let[serverCount;$httpRequest[https://raw.githubusercontent.com/DevJSTAR/planepal-api/refs/heads/main/api/data.json;GET;;serverCount;An error occurred while fetching the PlanePal Server Count!]]
-$let[memberCount;$httpRequest[https://raw.githubusercontent.com/DevJSTAR/planepal-api/refs/heads/main/api/data.json;GET;;memberCount;An error occurred while fetching the PlanePal Member Count!]]
+$let[serverCount;$httpRequest[$get[url];GET;;serverCount;An error occurred while fetching the PlanePal Server Count!]]
+$let[memberCount;$httpRequest[$get[url];GET;;memberCount;An error occurred while fetching the PlanePal Member Count!]]
+$let[url;https://raw.githubusercontent.com/DevJSTAR/planepal-api/refs/heads/main/api/data.json]
 `
 });
 ```
