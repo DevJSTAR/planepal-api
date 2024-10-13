@@ -1,4 +1,4 @@
-## [PlanePal API](https://github.com/DevJSTAR/planepal-api)
+# PlanePal API]
 [![GitHub stars](https://img.shields.io/github/stars/devjstar/planepal-api.svg?style=social&label=Stars&style=flat)](https://github.com/devjstar/planepal-api/stargazers)
 [![GitHub license](https://img.shields.io/github/license/devjstar/planepal-api.svg)](https://github.com/devjstar/planepal-api/blob/master/LICENSE)
 [![Patreon](https://img.shields.io/badge/Donate-Patreon-orange.svg)](https://www.patreon.com/jstarsdev)
