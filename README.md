@@ -54,39 +54,55 @@ def get_plane_pal_data():
 # Fetch and print data
 get_plane_pal_data()
 ```
-#### 2. JavaScript Integration (Using `fetch` API in Node.js or browser)
+#### 2. Web Integration (Using Fetch API)
 
-**Step 1:** Install the `node-fetch` package if using Node.js.
-```javascript
-npm install node-fetch
+**Step 1:** Create an HTML file (e.g., `index.html`) with the following structure:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlanePal Stats</title>
+</head>
+<body>
+    <h1>PlanePal Bot Stats</h1>
+    <p id="serverCount">Server Count: Loading...</p>
+    <p id="memberCount">Member Count: Loading...</p>
+
+    <script>
+        // API endpoint URL
+        const url = 'https://api.github.com/repos/DevJSTAR/planepal-api/contents/api/data.json';
+
+        // Function to fetch and display data
+        async function getPlanePalData() {
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                // Decode base64 content
+                const decodedContent = atob(data.content);
+                const stats = JSON.parse(decodedContent);
+
+                // Update HTML elements with stats
+                document.getElementById('serverCount').innerText = `Server Count: ${stats.serverCount}`;
+                document.getElementById('memberCount').innerText = `Member Count: ${stats.memberCount}`;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                document.getElementById('serverCount').innerText = 'Error fetching server count';
+                document.getElementById('memberCount').innerText = 'Error fetching member count';
+            }
+        }
+
+        // Fetch and display data on page load
+        getPlanePalData();
+    </script>
+</body>
+</html>
 ```
 
-**Step 2:** Use the following code to fetch and display the PlanePal server and member counts:
-```javascript
-const fetch = require('node-fetch');  // In Node.js, install using `npm install node-fetch`
+**Step 2:** Open the index.html file in a web browser. You should see the server and member counts displayed on the page.
 
-const url = 'https://api.github.com/repos/DevJSTAR/planepal-api/contents/api/data.json';
-
-// Function to fetch data from PlanePal API
-async function getPlanePalData() {
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        
-        // Decode base64 content
-        const decodedContent = Buffer.from(data.content, 'base64').toString('utf-8');
-        const stats = JSON.parse(decodedContent);
-
-        console.log(`Server Count: ${stats.serverCount}`);
-        console.log(`Member Count: ${stats.memberCount}`);
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-}
-
-// Fetch and log data
-getPlanePalData();
-```
 #### 3. Aoi.JS Integration (Using `$httpRequest`)
 ```javascript
 <client>.command({
