@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlanePal API</title>
     <link rel="icon" type="image/ico" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
@@ -15,9 +16,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             margin: 0;
             text-align: center;
+            user-select: none;
         }
 
         h1 {
@@ -45,6 +48,17 @@
             overflow: hidden;
             display: inline-block;
             vertical-align: middle;
+            margin: 10px;
+        }
+
+        button.disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        button:active {
+            outline: none;
+            box-shadow: none;
         }
 
         .spinner {
@@ -83,6 +97,16 @@
             50% { opacity: 1; }
             100% { opacity: 0.7; }
         }
+
+        .learn-more {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .learn-more i {
+            margin-left: 8px;
+        }
     </style>
 </head>
 <body>
@@ -95,6 +119,10 @@
         <button id="refreshButton">
             <span class="spinner hidden"></span>
             <span class="text">Refresh</span>
+        </button>
+        <button class="learn-more" onclick="window.open('https://github.com/DevJSTAR/planepal-api/blob/main/README.md', '_blank')">
+            Learn More
+            <i class="fas fa-external-link-alt"></i>
         </button>
     </div>
     <script>
@@ -114,10 +142,9 @@
 
                 serverCountText.classList.add('loading-text');
                 memberCountText.classList.add('loading-text');
-
                 buttonText.classList.add('hidden'); 
                 spinner.classList.remove('hidden'); 
-                refreshButton.disabled = true; 
+                refreshButton.classList.add('disabled');
 
                 const response = await fetch(url);
                 if (!response.ok) throw new Error('Network response was not ok');
@@ -142,10 +169,9 @@
 
                     serverCountText.classList.remove('loading-text');
                     memberCountText.classList.remove('loading-text');
-
                     buttonText.classList.remove('hidden');
                     spinner.classList.add('hidden');
-                    refreshButton.disabled = false; 
+                    refreshButton.classList.remove('disabled');
                 }, 2000); 
             }
         }
@@ -153,6 +179,12 @@
         window.onload = fetchData;
 
         document.getElementById('refreshButton').addEventListener('click', fetchData);
+
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('touchstart', function(event) {
+                event.preventDefault();
+            });
+        });
     </script>
 </body>
 </html>
