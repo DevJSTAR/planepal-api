@@ -71,7 +71,7 @@ getPlanePalData();
 <client>.command({
 name: "stats",
 code: `
-$title[✈ PlanePal's Bot Stats!]
+$title[:airplane: PlanePal's Bot Stats!]
 $addField[Member Count;$get[members]]
 $addField[Server Count;$get[servers]]
 $color[Random]
