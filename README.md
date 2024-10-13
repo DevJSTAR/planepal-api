@@ -23,8 +23,17 @@
 ### How to Integrate PlanePal API
 
 #### 1. **Python Integration** (Using `requests` library)
+
+**Step 1:** Install the `requests` library if you haven't already.
+```python
+pip install requests
+```
+
+**Step 2:** Use the following code to fetch and print PlanePal server and member counts:
 ```python
 import requests
+import json
+import base64  # Import the base64 module
 
 # API endpoint URL
 url = "https://api.github.com/repos/DevJSTAR/planepal-api/contents/api/data.json"
@@ -34,8 +43,8 @@ def get_plane_pal_data():
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
-        # Decoding base64 content
-        json_content = requests.utils.b64decode(data['content']).decode('utf-8')
+        # Decoding base64 content using base64.b64decode
+        json_content = base64.b64decode(data['content']).decode('utf-8')
         stats = json.loads(json_content)
         print(f"Server Count: {stats['serverCount']}")
         print(f"Member Count: {stats['memberCount']}")
@@ -46,6 +55,13 @@ def get_plane_pal_data():
 get_plane_pal_data()
 ```
 #### 2. JavaScript Integration (Using `fetch` API in Node.js or browser)
+
+**Step 1:** Install the `node-fetch` package if using Node.js.
+```javascript
+npm install node-fetch
+```
+
+**Step 2:** Use the following code to fetch and display the PlanePal server and member counts:
 ```javascript
 const fetch = require('node-fetch');  // In Node.js, install using `npm install node-fetch`
 
