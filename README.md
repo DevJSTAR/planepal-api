@@ -71,7 +71,7 @@ async function getPlanePalData() {
 // Fetch and log data
 getPlanePalData();
 ```
-#### 4. Aoi.JS Integration (Using `$httpRequest`)
+#### 3. Aoi.JS Integration (Using `$httpRequest`)
 ```javascript
 <client>.command({
 name: "stats",
