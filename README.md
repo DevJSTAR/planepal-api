@@ -5,7 +5,7 @@
 <br>
 [![DevServer](https://discord.com/api/guilds/1153672454426861598/widget.png?style=shield)](https://discord.gg/GbvXQXHY6Q)
 
-**PlanePal API** is a lightweight, RESTful API designed to deliver up-to-date information on PlanePal's server and member statistics. This API allows people to seamlessly integrate real-time data about PlanePal's user base into their applications or services.
+**PlanePal API** is a lightweight, RESTful API designed to deliver up-to-date information on PlanePal's server and member statistics. This API allows people to seamlessly integrate real-time data about PlanePal's user base into their applications or services. https://devjstar.github.io/planepal-api
 
 ### Features:
 - **Live Server Count**: Get the current number of Discord servers using PlanePal.
