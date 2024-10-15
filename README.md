@@ -111,12 +111,13 @@ get_plane_pal_data()
 name: "stats",
 code: `
 $title[:airplane: PlanePal's Bot Stats!]
-$addField[Member Count;$get[members]]
-$addField[Server Count;$get[servers]]
+$addField[Member Count;$splitText[2]]
+$addField[Server Count;$splitText[1]]
 $color[Random]
 
-$let[servers;$jsonRequest[$get[url];serverCount;An error occurred while fetching the PlanePal Server Count!]]
-$let[members;$jsonRequest[$get[url];memberCount;An error occurred while fetching the PlanePal Member Count!]]
+$textSplit[$getObjectValues[values; ]]
+$createObject[values;$get[api]]
+$let[api;$httpRequest[$get[url];GET;;;An error occurred while fetching the content of PlanePal API!]]
 $let[url;https://raw.githubusercontent.com/DevJSTAR/planepal-api/refs/heads/main/api/data.json]
 `
 });
