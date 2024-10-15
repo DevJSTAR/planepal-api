@@ -104,10 +104,29 @@ get_plane_pal_data()
 **Step 2:** Open the index.html file in a web browser. You should see the server and member counts displayed on the page.
 
 #### 3. Aoi.JS Integration (Using `$httpRequest`)
-> [!IMPORTANT]
-> The aoi.js example only works in v6.8.5 or less.
+
+##### Example 1:
 ```javascript
-<client>.command({
+<AoiClient>.command({
+name: "stats",
+code: `
+$title[:airplane: PlanePal's Bot Stats!]
+$addField[Member Count;$get[members]]
+$addField[Server Count;$get[servers]]
+$color[Random]
+
+$let[servers;$jsonRequest[$get[url];serverCount;An error occurred while fetching the PlanePal Server Count!]]
+$let[members;$jsonRequest[$get[url];memberCount;An error occurred while fetching the PlanePal Member Count!]]
+$let[url;https://raw.githubusercontent.com/DevJSTAR/planepal-api/refs/heads/main/api/data.json]
+`
+});
+```
+
+##### Example 2:
+> [!WARNING]
+> This example does not work in the latest aoi.js [6.9.0](https://github.com/aoijs/aoi.js/releases/tag/6.9.0). Use [6.8.5](https://github.com/aoijs/aoi.js/releases/tag/6.8.5) or lower.
+```javascript
+<AoiClient>.command({
 name: "stats",
 code: `
 $title[:airplane: PlanePal's Bot Stats!]
