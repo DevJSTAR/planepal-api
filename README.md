@@ -104,6 +104,8 @@ get_plane_pal_data()
 **Step 2:** Open the index.html file in a web browser. You should see the server and member counts displayed on the page.
 
 #### 3. Aoi.JS Integration (Using `$httpRequest`)
+> [!IMPORTANT]
+> The aoi.js example only works in v6.8.5 or less.
 ```javascript
 <client>.command({
 name: "stats",
