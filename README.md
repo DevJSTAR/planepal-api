@@ -125,7 +125,7 @@ $let[url;https://raw.githubusercontent.com/DevJSTAR/planepal-api/refs/heads/main
 
 ##### Example 2:
 > [!WARNING]
-> This example requires aoi.js version ([6.8.5](https://github.com/aoijs/aoi.js/releases/tag/6.8.5)) or lower. For the latest version ([6.9.0](https://github.com/aoijs/aoi.js/releases/tag/6.9.0)), see [Example 1](https://github.com/DevJSTAR/planepal-api/edit/main/README.md#example-1).
+> This example requires aoi.js version ([6.8.5](https://github.com/aoijs/aoi.js/releases/tag/6.8.5)) or lower. For the latest version ([6.9.0](https://github.com/aoijs/aoi.js/releases/tag/6.9.0)), see [Example 1](https://github.com/DevJSTAR/planepal-api/blob/main/README.md#example-1).
 ```javascript
 <AoiClient>.command({
 name: "stats",
