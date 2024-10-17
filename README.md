@@ -14,9 +14,8 @@
 - **GitHub Integration**: PlanePal API utilizes GitHub for storing and updating data, providing transparency and easy access to the data files in the repository.
 
 ### Use Cases:
-- **Bot Dashboard**: Integrate the PlanePal API with a dashboard to provide users or admins a visual overview of server and member stats.
+- **Bot Dashboard**: Integrate the PlanePal API with a dashboard to provide people a visual overview of server and member stats.
 - **Bot Analytics**: Use the API to track PlanePal’s growth and analyze usage trends over time.
-- **Server Management**: Admins can monitor server changes and member activity with real-time updates.
 
 ---
 
