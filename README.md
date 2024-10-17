@@ -110,14 +110,13 @@ get_plane_pal_data()
 <AoiClient>.command({
 name: "stats",
 code: `
-$title[:airplane: PlanePal's Bot Stats!]
+$title[✈️ PlanePal's Bot Stats!]
 $addField[Member Count;$splitText[2]]
 $addField[Server Count;$splitText[1]]
 $color[Random]
 
 $textSplit[$getObjectValues[values; ]]
-$createObject[values;$get[api]]
-$let[api;$httpRequest[$get[url];GET;;;An error occurred while fetching the content of PlanePal API!]]
+$createObject[values;$httpRequest[$get[url];GET;;;An error occurred while fetching the content of PlanePal API!]]
 $let[url;https://raw.githubusercontent.com/DevJSTAR/planepal-api/refs/heads/main/api/data.json]
 `
 });
