@@ -1,6 +1,6 @@
 # [PlanePal API](https://devjstar.github.io/planepal-api)
 [![GitHub stars](https://img.shields.io/github/stars/devjstar/planepal-api.svg?style=social&label=Stars&style=flat)](https://github.com/devjstar/planepal-api/stargazers)
-[![GitHub license](https://img.shields.io/github/license/devjstar/planepal-api.svg)](https://github.com/devjstar/planepal-api/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/devjstar/planepal-api.svg)](https://github.com/devjstar/planepal-api/blob/main/LICENSE)
 [![Patreon](https://img.shields.io/badge/Donate-Patreon-orange.svg)](https://www.patreon.com/jstarsdev)
 <br>
 [![DevServer](https://discord.com/api/guilds/1153672454426861598/widget.png?style=shield)](https://discord.gg/GbvXQXHY6Q)
