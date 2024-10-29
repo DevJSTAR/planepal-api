@@ -1,4 +1,3 @@
-/* Reset and base styles */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 * {
@@ -8,7 +7,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* Main container */
 .container {
   min-height: 100vh;
   background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
@@ -25,7 +23,6 @@
   margin: 0 auto;
 }
 
-/* Header */
 .header {
   display: flex;
   align-items: center;
@@ -46,7 +43,56 @@
   letter-spacing: -0.025em;
 }
 
-/* Stats grid */
+.error-popup {
+  position: fixed;
+  top: -3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  background: rgba(20, 20, 20, 0.9);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  font-size: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  opacity: 0;
+  transition: all 0.3s ease, opacity 0.3s ease;
+}
+
+.error-popup.slide-down {
+  animation: slideDown 0.5s forwards;
+}
+
+.error-popup.slide-up {
+  animation: slideUp 0.5s forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes slideDown {
+  from {
+    top: -3rem;
+    opacity: 0;
+  }
+  to {
+    top: 1.5rem;
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    top: 1.5rem;
+    opacity: 1;
+  }
+  to {
+    top: -3rem;
+    opacity: 0;
+  }
+}
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -75,7 +121,6 @@
   color: white;
 }
 
-/* Buttons */
 .button-container {
   display: flex;
   flex-direction: column;
@@ -143,7 +188,6 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* Loading animation */
 @keyframes spin {
   to {
     transform: rotate(360deg);
