@@ -106,6 +106,8 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.75rem;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .stat-label {
