@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "*.css", "use": "@vercel/static" },
+    { "src": "*.js", "use": "@vercel/static" },
+    { "src": "assets/**", "use": "@vercel/static" },
+    { "src": "api/**/*.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/auth/callback", "dest": "/api/auth/callback.js" },
+    { "src": "/api/stats", "dest": "/api/stats.js" },
+    { "src": "/api/save-stats", "dest": "/api/stats.js" },
+    { "src": "/profile", "dest": "/profile.html" },
+    { "src": "/leaderboard", "dest": "/leaderboard.html" },
+    { "src": "/(.*)", "dest": "/$1" },
+    { "src": "/api/admin/cleanup", "dest": "/api/admin/cleanup.js" },
+    { "src": "/api/admin/stats", "dest": "/api/admin/stats.js" },
+    { "src": "/api/auth/signature", "dest": "/api/auth/signature.js" }
+  ]
+} 

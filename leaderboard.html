@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - Cube Shooter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/ico" href="assets/favicon.ico">
+</head>
+<body class="has-cursor">
+    <div class="crosshair">
+        <div class="dot"></div>
+    </div>
+
+    <nav class="game-nav">
+        <a href="https://cubeshooter.vercel.app" class="nav-logo">
+            <img src="assets/player.png" alt="Logo" class="nav-logo-img">
+        </a>
+        <div class="nav-links">
+            <a href="/profile">Profile</a>
+            <a href="/leaderboard" class="active">Leaderboard</a>
+            <a href="/" class="play-btn">Play Game</a>
+        </div>
+    </nav>
+
+    <div class="floating-cubes">
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+    </div>
+
+    <div class="leaderboard-page">
+        <h1 class="page-title">Top Players</h1>
+        <div class="leaderboard-list"></div>
+    </div>
+
+    <script src="stats.js"></script>
+    <script src="audio.js"></script>
+    <script src="leaderboard.js"></script>
+</body>
+</html> 

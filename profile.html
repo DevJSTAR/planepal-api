@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Cube Shooter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/ico" href="favicon.ico">
+</head>
+<body class="has-cursor">
+    <div class="crosshair">
+        <div class="dot"></div>
+    </div>
+
+    <nav class="game-nav">
+        <a href="https://cubeshooter.vercel.app" class="nav-logo">
+            <img src="assets/player.png" alt="Logo" class="nav-logo-img">
+        </a>
+        <div class="nav-links">
+            <a href="/profile" class="active">Profile</a>
+            <a href="/leaderboard">Leaderboard</a>
+            <a href="/" class="play-btn">Play Game</a>
+        </div>
+    </nav>
+
+    <div class="floating-cubes">
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+        <div class="cube"></div>
+    </div>
+
+    <div class="profile-page">
+        <h1 class="page-title">Player Profile</h1>
+        <div class="profile-content">
+            <div class="profile-header">
+                <img src="" alt="Profile" class="profile-avatar">
+                <h2 class="profile-username"></h2>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Top Wave</h3>
+                    <span class="stat-value" id="stat-wave">0</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-skull"></i>
+                    <h3>Kills</h3>
+                    <span class="stat-value" id="stat-kills">0</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-heart-broken"></i>
+                    <h3>Deaths</h3>
+                    <span class="stat-value" id="stat-deaths">0</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-fist-raised"></i>
+                    <h3>Damage Dealt</h3>
+                    <span class="stat-value" id="stat-damage-dealt">0</span>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Damage Taken</h3>
+                    <span class="stat-value" id="stat-damage-taken">0</span>
+                </div>
+            </div>
+            <div class="leaderboard-position">
+                <h3>Leaderboard Rank</h3>
+                <span class="rank">#0</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="stats.js"></script>
+    <script src="audio.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html> 
